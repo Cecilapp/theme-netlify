@@ -1,0 +1,9 @@
+defaultpages:
+  redirects:
+    path: _redirects
+    output: netlify_redirects
+output:
+  formats:
+    - name: netlify_redirects
+      mediatype: text/plain
+      extension: ""
