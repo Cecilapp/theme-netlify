@@ -7,6 +7,6 @@
 # Redirects from config
 {% if site.netlify.redirects %}
 {% for redirect in site.netlify.redirects %}
-{{ url(redirect.from, {'canonical': false}) }}    {{ url(redirect.to, {'canonical': false}) }}{% if redirect.status %}    {{ redirect.status }}{% if redirect.force %}!{% endif %}{% endif %}
+{{ url(redirect.from, {'canonical': false}) }}    {{ url(redirect.to, {'canonical': false}) }}{% if redirect.status is defined %}    {{ redirect.status }}{% if redirect.force is defined and redirect.force %}!{% endif %}{% endif %}
 {% endfor %}
 {% endif %}
