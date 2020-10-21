@@ -1,6 +1,6 @@
 # Cecil component theme: Netlify
 
-The _Netlify_ component theme for [Cecil](https://cecil.app) provide support of Netlity's [`_redirects`](https://docs.netlify.com/routing/redirects/) and [`_header`](https://docs.netlify.com/routing/headers/).
+> The _Netlify_ component theme for [Cecil](https://cecil.app) provide support of Netlity's [`_redirects`](https://docs.netlify.com/routing/redirects/) and [`_header`](https://docs.netlify.com/routing/headers/).
 
 ## Installation
 
