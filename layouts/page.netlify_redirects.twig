@@ -1,12 +1,16 @@
-# Cecil HTML redirects
-{%- for page in site.pages -%}
-  {%- if page.redirect is defined ~%}
+# Cecil redirects' pages
+{%- for page in site.pages|filter(p => p.redirect is defined) ~%}
 {{ url(page, {'canonical': false}) }}    {{ url(page.redirect, {'canonical': false}) }}    301!
-  {%- endif ~%}
 {%- endfor -%}
-{%- if site.netlify.redirects is defined and site.netlify.redirects -%}
-# Redirects from config
+{%- if site.netlify.redirects is defined and site.netlify.redirects > 0 ~%}
+# Redirects defined in config
   {%- for redirect in site.netlify.redirects ~%}
 {{ url(redirect.from, {'canonical': false}) }}    {{ url(redirect.to, {'canonical': false}) }}{% if redirect.status is defined %}    {{ redirect.status }}{% if redirect.force is defined and redirect.force %}!{% endif %}{% endif ~%}
   {%- endfor ~%}
 {%- endif -%}
+{#{%- if site.languages > 1 ~%}
+# Language redirects
+  {%- for language in site.languages|filter(l => l.code != site.language) ~%}
+/  /{{ language.code }}/    302!    Language={{ language.code }}
+  {%- endfor -%}
+{%- endif -%}#}
