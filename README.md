@@ -30,6 +30,8 @@ netlify:
       force: true # optional
 ```
 
+Refer to [Netlify documentation](https://docs.netlify.com/routing/redirects/redirect-options/) for details.
+
 ### Enable redirect by language
 
 ```yaml
@@ -37,10 +39,16 @@ netlify:
   redirect_by_language: true # false by default
 ```
 
-It generate the following redirect:
+It generate the following redirect for each available language other than the default:
+
+```
+/  /<language-code>/    302!    Language=<language-code>
+```
+
+_Example:_
 
 ```
 /  /fr/    302!    Language=fr
 ```
 
-> The language can be specified in the cookie `nf_lang`, so you can override the default behavior with JavaScript.
+> The language can be specified in the cookie `nf_lang`, so you can override the default behavior with JavaScript (in case of a language dropdown selector for example).
