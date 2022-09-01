@@ -8,9 +8,9 @@
 {{ url(redirect.from, {'canonical': false}) }}    {{ url(redirect.to, {'canonical': false}) }}{% if redirect.status is defined %}    {{ redirect.status }}{% if redirect.force is defined and redirect.force %}!{% endif %}{% endif ~%}
   {%- endfor ~%}
 {%- endif -%}
-{#{%- if site.languages > 1 ~%}
+{%- if site.netlify.redirect_by_language|default(false) and site.languages > 1 ~%}
 # Language redirects
   {%- for language in site.languages|filter(l => l.code != site.language) ~%}
 /  /{{ language.code }}/    302!    Language={{ language.code }}
   {%- endfor -%}
-{%- endif -%}#}
+{%- endif -%}

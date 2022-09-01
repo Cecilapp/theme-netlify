@@ -19,7 +19,7 @@ theme:
   - netlify
 ```
 
-Add redirections:
+### Add redirections
 
 ```yaml
 netlify:
@@ -29,3 +29,18 @@ netlify:
       status: 301 # optional
       force: true # optional
 ```
+
+### Enable redirect by language
+
+```yaml
+netlify:
+  redirect_by_language: true # false by default
+```
+
+It generate the following redirect:
+
+```
+/  /fr/    302!    Language=fr
+```
+
+> The language can be specified in the cookie `nf_lang`, so you can override the default behavior with JavaScript.
