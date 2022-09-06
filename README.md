@@ -32,14 +32,14 @@ netlify:
 
 Refer to [Netlify documentation](https://docs.netlify.com/routing/redirects/redirect-options/) for details.
 
-### Enable redirect by language
+### Redirect home page to the user language version
 
 ```yaml
 netlify:
   redirect_by_language: true # false by default
 ```
 
-It generate the following redirect for each available language other than the default:
+It generate the following redirect for each available language (other than the default):
 
 ```
 /  /<language-code>/    302!    Language=<language-code>
