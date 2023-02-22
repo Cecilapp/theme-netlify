@@ -3,7 +3,8 @@ defaultpages:
     path: _redirects
     output: netlify_redirects
     multilingual: false
-    cache: false
+    serviceworker:
+      precache: false
 output:
   formats:
     - name: netlify_redirects
