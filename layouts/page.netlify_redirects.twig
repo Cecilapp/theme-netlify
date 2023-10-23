@@ -9,8 +9,8 @@
   {%- endfor ~%}
 {%- endif -%}
 {%- if site.netlify.redirect_by_language|default(false) and site.languages > 1 ~%}
-# Language redirects
+# Languages redirects
   {%- for language in site.languages|filter(l => l.code != site.language) ~%}
-/  /{{ language.code }}/    302!    Language={{ language.code }}
+/    /{{ language.code }}/    302!    Language={{ language.code }}
   {%- endfor -%}
 {%- endif -%}
