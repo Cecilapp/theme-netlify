@@ -1,3 +1,4 @@
+# Default pages
 pages:
   default:
     redirects:
@@ -6,8 +7,109 @@ pages:
       multilingual: false
       serviceworker:
         precache: false
+    headers:
+      path: _headers
+      output: netlify_headers
+      multilingual: false
+      serviceworker:
+        precache: false
+# Custom output
 output:
   formats:
     - name: netlify_redirects
       mediatype: text/plain
       extension: ""
+    - name: netlify_headers
+      mediatype: text/plain
+      extension: ""
+# HTTP headers
+headers:
+  # Security
+  - path: /*
+    headers:
+      - key: X-Frame-Options
+        value: SAMEORIGIN
+      - key: X-XSS-Protection
+        value: 1; mode=block
+      - key: X-Content-Type-Options
+        value: nosniff
+      - key: Strict-Transport-Security
+        value: max-age=31536000; includeSubDomains; preload
+  # Assets
+  - path: /favicon*
+    headers:
+      - key: Cache-Control
+        value: public, max-age=31536000
+  - path: /logo*
+    headers:
+      - key: Cache-Control
+        value: public, max-age=31536000
+  - path: /icon*
+    headers:
+      - key: Cache-Control
+        value: public, max-age=31536000
+  - path: /assets/*
+    headers:
+      - key: Cache-Control
+        value: public, max-age=31536000
+  - path: /images/*
+    headers:
+      - key: Cache-Control
+        value: public, max-age=31536000
+  - path: /videos/*
+    headers:
+      - key: Cache-Control
+        value: public, max-age=31536000
+  - path: /styles/*
+    headers:
+      - key: Cache-Control
+        value: public, max-age=31536000
+  - path: /css/*
+    headers:
+      - key: Cache-Control
+        value: public, max-age=31536000
+  - path: "/*.css"
+    headers:
+      - key: Cache-Control
+        value: public, max-age=31536000
+  - path: /fonts/*
+    headers:
+      - key: Cache-Control
+        value: public, max-age=31536000
+  # Scripts
+  - path: /javascript/*
+    headers:
+      - key: Cache-Control
+        value: private, max-age=31536000
+  - path: /js/*
+    headers:
+      - key: Cache-Control
+        value: private, max-age=31536000
+  - path: "/*.js"
+    headers:
+      - key: Cache-Control
+        value: private, max-age=31536000
+  # Service Worker
+  - path: /serviceworker.js
+    headers:
+      - key: Cache-Control
+        value: private, max-age=31536000
+  - path: /manifest.webmanifest
+    headers:
+      - key: Content-Type
+        value: application/manifest+json
+      - key: Cache-Control
+        value: private, max-age=31536000
+  # Admin
+  - path: /admin/*
+    headers:
+      - key: Cache-Control
+        value: "no-cache, no-store, must-revalidate, max-age=0"
+      - key: Content-Security-Policy
+        value: "default-src *; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'; img-src * data: 'unsafe-inline' blob: *; connect-src * 'unsafe-inline'; frame-src *; font-src * data: 'unsafe-inline';"
+  - path: /.netlify/*
+    headers:
+      - key: Cache-Control
+        value: "no-cache, no-store, must-revalidate, max-age=0"
+      - key: Content-Security-Policy
+        value: "default-src *; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'; img-src * data: 'unsafe-inline' blob: *; connect-src * 'unsafe-inline'; frame-src *; font-src * data: 'unsafe-inline';"

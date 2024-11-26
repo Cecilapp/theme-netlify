@@ -1,0 +1,10 @@
+{#- Netlify headers -#}
+# HTTP headers from Cecil config file(s)
+{%- if site.headers -%}
+  {%- for entry in site.headers ~%}
+{{ entry.path ~}}
+    {%- for header in entry.headers ~%}
+  {{ header.key }}: {{ header.value }}
+    {%- endfor ~%}
+  {%- endfor ~%}
+{%- endif ~%}
