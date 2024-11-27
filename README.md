@@ -4,8 +4,8 @@ The _Netlify_ component theme for [Cecil](https://cecil.app) provides support of
 
 After installation and without any configuration, this component theme generate:
 
-1. a [`_redirects`](./layouts/page.netlify_redirects.twig) file containing HTML's redirections created by Cecil (automatic or created manually with the [`redirect`](https://cecil.app/documentation/content/#redirect) front matter variable)
-2. a [`_header`](./static/_headers) file containg a set of best praticies about security and assets cache control
+1. a [`_redirects`](./layouts/_default/page.netlify_redirects.twig) file containing HTML's redirections created by Cecil (automatic or created manually with the [`redirect`](https://cecil.app/documentation/content/#redirect) front matter variable)
+2. a [`_headers`](./layouts/_default/page.netlify_headers.twig) file containg HTTP headers created by Cecil (generated from [`headers' configuration`](https://cecil.app/documentation/configuration/#headers))
 
 ## Installation
 
@@ -17,7 +17,7 @@ composer require cecil/theme-netlify
 
 ## Usage
 
-Add `netlify` in the `theme` section of your `config.yml`:
+Add `netlify` in the `theme` section of your site configuration:
 
 ```yaml
 theme:
@@ -37,7 +37,7 @@ netlify:
 
 Refer to [Netlify documentation](https://docs.netlify.com/routing/redirects/redirect-options/) for details.
 
-### Redirect home page to the user language version
+#### Redirect home page to the user language version
 
 ```yaml
 netlify:
@@ -57,3 +57,15 @@ _Example:_
 ```
 
 > The language can be specified in the cookie `nf_lang`, so you can override the default behavior with JavaScript (in case of a language dropdown selector for example).
+
+### Add headers
+
+```yaml
+headers:
+  - path: <path> # Relative path, prefixed with a slash. Support "*" wildcard.
+    headers:
+      - key: <key>
+        value: "<value>"
+```
+
+Document: <https://cecil.app/documentation/configuration/#headers>.
