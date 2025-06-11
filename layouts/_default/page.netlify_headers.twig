@@ -1,6 +1,6 @@
 {#- Netlify headers -#}
 # HTTP headers from Cecil config file(s)
-{%- if site.server.headers -%}
+{%- if site.server.headers is defined -%}
   {%- for entry in site.server.headers ~%}
 {{ entry.path ~}}
     {%- for header in entry.headers ~%}
