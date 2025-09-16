@@ -5,7 +5,7 @@ The _Netlify_ component theme for [Cecil](https://cecil.app) provides support of
 After installation and without any configuration, this component theme generate:
 
 1. a [`_redirects`](./layouts/_default/page.netlify_redirects.twig) file containing HTML's redirections created by Cecil (automatic or created manually with the [`redirect`](https://cecil.app/documentation/content/#redirect) front matter variable)
-2. a [`_headers`](./layouts/_default/page.netlify_headers.twig) file containg HTTP headers created by Cecil (generated from [`headers' configuration`](https://cecil.app/documentation/configuration/#headers))
+2. a [`_headers`](./layouts/_default/page.netlify_headers.twig) file containing HTTP headers created by Cecil (generated from [`headers' configuration`](https://cecil.app/documentation/configuration/#headers))
 
 ## Installation
 
@@ -61,11 +61,12 @@ _Example:_
 ### Add headers
 
 ```yaml
-headers:
-  - path: <path> # Relative path, prefixed with a slash. Support "*" wildcard.
-    headers:
-      - key: <key>
-        value: "<value>"
+server:
+  headers:
+    - path: <path> # Relative path, prefixed with a slash. Support "*" wildcard.
+      headers:
+        - key: <key>
+          value: "<value>"
 ```
 
 Document: <https://cecil.app/documentation/configuration/#headers>.
