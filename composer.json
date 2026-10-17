@@ -10,7 +10,7 @@
   "extra": {
     "name": "netlify",
     "branch-alias": {
-      "dev-master": "2.x-dev"
+      "dev-main": "3.x-dev"
     }
   },
   "minimum-stability": "dev",

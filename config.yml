@@ -22,16 +22,17 @@ output:
     - name: netlify_headers
       mediatype: text/plain
       extension: ""
-# Server HTTP headers
-server:
-  headers:
+# Theme options
+netlify:
+  redirect_by_language: false
+  localized_404: true
+  # Default HTTP headers (`false` to disable)
+  default_headers:
     # Security
     - path: /*
       headers:
         - key: X-Frame-Options
           value: SAMEORIGIN
-        - key: X-XSS-Protection
-          value: 1; mode=block
         - key: X-Content-Type-Options
           value: nosniff
         - key: Strict-Transport-Security
@@ -94,13 +95,13 @@ server:
     - path: /serviceworker.js
       headers:
         - key: Cache-Control
-          value: private, max-age=31536000
+          value: no-cache
     - path: /manifest.webmanifest
       headers:
         - key: Content-Type
           value: application/manifest+json
         - key: Cache-Control
-          value: private, max-age=31536000
+          value: no-cache
     # Admin
     - path: /admin/*
       headers:

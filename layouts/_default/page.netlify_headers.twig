@@ -1,10 +1,10 @@
 {#- Netlify headers -#}
+{%- set default_headers = site.netlify.default_headers|default([]) -%}
+{%- set headers = (default_headers is iterable ? default_headers : [])|merge(site.server.headers ?? []) -%}
 # HTTP headers from Cecil config file(s)
-{%- if site.server.headers is defined -%}
-  {%- for entry in site.server.headers ~%}
+{%- for entry in headers ~%}
 {{ entry.path ~}}
-    {%- for header in entry.headers ~%}
+  {%- for header in entry.headers|default([]) ~%}
   {{ header.key }}: {{ header.value }}
-    {%- endfor ~%}
   {%- endfor ~%}
-{%- endif ~%}
+{%- endfor ~%}
