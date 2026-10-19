@@ -7,12 +7,14 @@ pages:
       multilingual: false
       serviceworker:
         precache: false
+      excluded: true
     headers:
       path: _headers
       output: netlify_headers
       multilingual: false
       serviceworker:
         precache: false
+      excluded: true
 # Custom output
 output:
   formats:
